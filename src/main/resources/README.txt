@@ -2,7 +2,7 @@
 
 ## Overview
 
-  - _Just removes lava trap, that's all._
+  - _Just removes lava traps, that's all._
 
 ## License
 
