@@ -1,26 +1,60 @@
 package hiiragi283.lava_sweeper;
 
+import com.mojang.logging.LogUtils;
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.terraingen.PopulateChunkEvent;
+import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.Event;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
+import org.slf4j.Logger;
 
-@Mod(modid = "lava_sweeper", name = "LavaSweeper", version = "v1.0.0-1.12", acceptedMinecraftVersions = "[1.12, 1.12.2]")
+// The value here should match an entry in the META-INF/mods.toml file
+@Mod(LavaSweeper.MODID)
 public class LavaSweeper {
 
-    @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
-        //イベントを登録する
-        MinecraftForge.TERRAIN_GEN_BUS.register(this);
+    // Define mod id in a common place for everything to reference
+    public static final String MODID = "lava_sweeper";
+    // Directly reference a slf4j logger
+    private static final Logger LOGGER = LogUtils.getLogger();
+
+    public LavaSweeper() {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        // Register the commonSetup method for modloading
+        modEventBus.addListener(this::commonSetup);
+
+        // Register ourselves for server and other game events we are interested in
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        // Some common setup code
+        LOGGER.info("HELLO FROM COMMON SETUP");
+        LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+    }
+
+    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
-    public void removeLavaTrap(PopulateChunkEvent.Populate event) {
-        //ネザーの1マス溶岩を消す
-        if (event.getType() == PopulateChunkEvent.Populate.EventType.NETHER_LAVA || event.getType() == PopulateChunkEvent.Populate.EventType.NETHER_LAVA2) {
-            event.setResult(Event.Result.DENY);
+    public void onServerStarting(ServerStartingEvent event) {
+        // Do something when the server starts
+        LOGGER.info("HELLO from server starting");
+    }
+
+    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
+    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class ClientModEvents {
+
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            // Some client setup code
+            LOGGER.info("HELLO FROM CLIENT SETUP");
+            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
     }
 }
