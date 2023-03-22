@@ -3,14 +3,14 @@
     "modid": "lava_sweeper",
     "name": "LavaSweeper",
     "description": "Just removes lava trap, that's all.",
-    "version": "${version}",
+    "version": "v1.0.0-1.12",
     "mcversion": "${mcversion}",
     "url": "",
     "updateUrl": "",
     "authorList": [
       "Hiiragi Tsubasa"
     ],
-    "credits": "Hiiragi283 Tsubasa",
+    "credits": "Hiiragi Tsubasa",
     "logoFile": "logo.png",
     "screenshots": [],
     "dependencies": []

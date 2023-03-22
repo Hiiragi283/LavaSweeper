@@ -3,10 +3,10 @@ plugins {
 }
 
 group = 'hiiragi283'
-version = 'v0.1.0'
+version = 'v1.0.0-1.12'
 
 java {
-    archivesBaseName = 'lava_sweeper'
+    archivesBaseName = 'LavaSweeper'
     toolchain.languageVersion = JavaLanguageVersion.of(8)
 }
 
