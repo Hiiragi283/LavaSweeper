@@ -1,18 +1,25 @@
-[
-  {
-    "modid": "lava_sweeper",
-    "name": "LavaSweeper",
-    "description": "Just removes lava trap, that's all.",
-    "version": "v1.0.0-1.12",
-    "mcversion": "${mcversion}",
-    "url": "",
-    "updateUrl": "",
-    "authorList": [
-      "Hiiragi Tsubasa"
-    ],
-    "credits": "Hiiragi Tsubasa",
-    "logoFile": "logo.png",
-    "screenshots": [],
-    "dependencies": []
-  }
-]
+{
+  "modListVersion": 2,
+  "modList": [
+    {
+      "modid": "${modId}",
+      "name": "${modName}",
+      "description": "An example mod for Minecraft 1.7.10 with Forge focused on a stable setup.",
+      "version": "${modVersion}",
+      "mcversion": "${minecraftVersion}",
+      "url": "",
+      "updateUrl": "",
+      "authorList": [
+        "Hiiragi Tsubasa"
+      ],
+      "credits": "Hiiragi Tsubasa",
+      "logoFile": "logo.png",
+      "screenshots": [],
+      "parent": "",
+      "requiredMods": [],
+      "dependencies": [],
+      "dependants": [],
+      "useDependencyInformation": true
+    }
+  ]
+}
