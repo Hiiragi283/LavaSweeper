@@ -4,7 +4,7 @@
     {
       "modid": "${modId}",
       "name": "${modName}",
-      "description": "An example mod for Minecraft 1.7.10 with Forge focused on a stable setup.",
+      "description": "Just removes lava trap, that's all.",
       "version": "${modVersion}",
       "mcversion": "${minecraftVersion}",
       "url": "",
