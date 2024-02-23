@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "io.github.hiiragi283"
-version = "1.0.0+fabric1182"
+version = "1.0.0+fabric11x2"
 
 repositories {
     mavenCentral()
