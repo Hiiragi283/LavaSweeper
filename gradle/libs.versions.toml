@@ -1,0 +1,15 @@
+[versions]
+minecraft = "1.16.5"
+fabric-loom = "1.5-SNAPSHOT"
+fabric-loader = "0.15.3"
+fabric-yarn = "1.16.5+build.10"
+
+[libraries]
+minecraft = { group = "com.mojang", name = "minecraft", version.ref = "minecraft" }
+fabric-loader = { group = "net.fabricmc", name = "fabric-loader", version.ref = "fabric-loader" }
+
+[bundles]
+mods-fabric = ["fabric-loader"]
+
+[plugins]
+fabric-loom = { id = "fabric-loom", version.ref = "fabric-loom" }
